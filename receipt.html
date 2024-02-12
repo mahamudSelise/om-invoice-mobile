@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  style="
+    background-color: #000;
+    box-sizing: border-box;
+    width: 1240px;
+    height: 1754px;
+  "
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>OM Invoice</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background-color: #fff;
+      height: calc(100% - 200px);
+      padding: 100px;
+      font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont,
+        'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+      line-height: 1;
+      position: relative;
+    "
+  >
+    <header
+      style="display: flex; justify-content: space-between; margin-bottom: 70px"
+    >
+      <!-- <img src="./order-monkey-logo.png" alt="" /> -->
+      <img
+        src="https://az-cdn.selise.biz/selisecdn/cdn/order-monkey/om-logo.png"
+        alt=""
+      />
+      <div style="display: flex; align-items: center">
+        <div style="margin: 10px; margin-left: 50px">
+          <p style="font-size: 18px; margin-bottom: 10px">Invoice</p>
+          <p style="font-size: 24px; font-weight: bold">#0342</p>
+        </div>
+        <div style="margin: 10px; margin-left: 50px">
+          <p style="font-size: 18px; margin-bottom: 10px">Balance Due</p>
+          <p style="font-size: 24px; font-weight: bold">100</p>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Receipt Header -->
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 300px;
+          row-gap: 60px;
+          white-space: nowrap;
+          font-size: 20px;
+          margin-bottom: 50px;
+        "
+      >
+        <div style="color: rgba(45, 47, 49, 1); line-height: 1.5">
+          <p>Secure Link Services AG (SELISE)</p>
+          <p>The Circle 37, Postfach</p>
+          <p>8058 Zürich-Flughafen</p>
+          <p>Switzerland</p>
+          <p>CHE-104.375.184 MWST</p>
+        </div>
+        <div style="color: rgba(45, 47, 49, 1); line-height: 1.5">
+          <p>Bill To</p>
+          <p>Vendomat AG (Burgermeister)</p>
+          <p>Vendomat AG</p>
+          <p>Zentrumsplatz 1</p>
+          <p>3322 Urtenen -Schönbühl</p>
+          <p>Switzerland</p>
+        </div>
+        <div style="color: rgba(45, 47, 49, 1); line-height: 1.5">
+          <p>IBAN: CH67 8080 8005 0650 7263 3</p>
+          <p>CHF Empfänger: Secure Link Services AG SELISE</p>
+          <p>Postbox, The Circle 37,</p>
+          <p>8058 Zürich-Airport</p>
+          <p>Bank: Raiffeisenbank Seerücken, CH-8505 Pfyn</p>
+          <p>SWIFT/BIC: RAIFCH22</p>
+        </div>
+        <div style="color: rgba(45, 47, 49, 1); line-height: 1.5">
+          <p>Date: {{date}}</p>
+          <p>Terms: Net 30</p>
+          <p>8058 Zürich-Airport</p>
+        </div>
+      </div>
+      <!-- Invoice Breakdown -->
+      <table
+        style="
+          width: 100%;
+          border-collapse: collapse;
+          border-radius: 10px;
+          overflow: hidden;
+        "
+      >
+        <thead style="background-color: #000; color: #fff">
+          <tr>
+            <th style="text-align: start; padding: 20px" colspan="2">
+              Item & Description
+            </th>
+            <th style="text-align: start; padding: 20px">Quantity</th>
+            <th style="text-align: start; padding: 20px">Rate</th>
+            <th style="text-align: end; padding: 20px">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in MetaData.metaInfo[0].products %}
+          <tr>
+            <td style="text-align: start; padding: 20px; font-weight: bold">
+              {{product.title}}
+            </td>
+          </tr>
+          {% for item in product.items %}
+          <tr style="border-radius: 100px; border-bottom: 1px solid #000">
+            <td style="text-align: start; padding: 20px" colspan="2">
+              {{item.title}}
+            </td>
+            <td style="text-align: start; padding: 20px">{{item.quantity}}</td>
+            <td style="text-align: start; padding: 20px">{{item.price}}</td>
+            <td style="text-align: end; padding: 20px">{{item.amount}}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            {% endfor %}
+          </tr>
+        </tbody>
+
+        <tfoot style="margin-left: auto">
+          <tr>
+            <td colspan="3" style="text-align: start; padding: 20px 15px"></td>
+            <td style="text-align: start; padding: 20px 15px">Subtotal</td>
+            <td style="text-align: start; padding: 20px; text-align: end">
+              {{MetaData.metaInfo[0].subtotal}}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" style="text-align: start; padding: 20px 15px"></td>
+            <td
+              style="
+                text-align: start;
+                padding: 20px;
+                border-radius: 100px;
+                border-bottom: 1px solid #000;
+              "
+            >
+              Vat 7.7%
+            </td>
+            <td
+              style="
+                text-align: start;
+                padding: 20px;
+                border-radius: 100px;
+                border-bottom: 1px solid #000;
+                text-align: end;
+              "
+            >
+              {{MetaData.metaInfo[0].vat}}
+            </td>
+          </tr>
+          <tr style="font-weight: bold">
+            <td colspan="3" style="text-align: start; padding: 20px 15px"></td>
+            <td style="text-align: start; padding: 20px 15px">Total</td>
+            <td style="text-align: start; padding: 20px; text-align: end">
+              {{MetaData.metaInfo[0].total}}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <footer
+        style="
+          position: absolute;
+          bottom: 0;
+          padding: 20px 0 30px 0;
+          border-top: 1px solid #000;
+          width: 1040px;
+          text-align: end;
+          font-size: 20px;
+        "
+      >
+        Page {{MetaData.metaInfo[0].pageNumber}} of
+        {{MetaData.metaInfo[0].totalPage}}
+      </footer>
+    </main>
+  </body>
+</html>

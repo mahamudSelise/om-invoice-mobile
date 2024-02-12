@@ -1,0 +1,66 @@
+{
+  "products": [
+    {
+      "title": "Product 1",
+      "items": [
+        {
+          "title": "Item 1",
+          "quantity": 2,
+          "price": 49.9,
+          "amount": 99.8
+        },
+        {
+          "title": "Item 2",
+          "quantity": 2,
+          "price": 49.9,
+          "amount": 99.8
+        }
+      ]
+    },
+    {
+      "title": "Product 2",
+      "items": [
+        {
+          "title": "Item 1",
+          "quantity": 2,
+          "price": 49.9,
+          "amount": 99.8
+        },
+        {
+          "title": "Item 2",
+          "quantity": 2,
+          "price": 49.9,
+          "amount": 99.8
+        },
+        {
+          "title": "Item 3",
+          "quantity": 2,
+          "price": 49.9,
+          "amount": 99.8
+        }
+      ]
+    },
+    {
+      "title": "Product 3",
+      "items": [
+        {
+          "title": "Item 1",
+          "quantity": 2,
+          "price": 49.9,
+          "amount": 99.8
+        },
+        {
+          "title": "Item 2",
+          "quantity": 2,
+          "price": 49.9,
+          "amount": 99.8
+        }
+      ]
+    }
+  ],
+  "subtotal": 499,
+  "vat": 38.43,
+  "total": 537.43,
+  "pageNumber": 1,
+  "totalPage": 1
+}
