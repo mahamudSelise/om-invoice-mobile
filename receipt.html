@@ -51,58 +51,44 @@
         alt=""
       />
       <div style="display: flex; align-items: center">
-        <div style="margin: 10px; margin-left: 50px">
-          <p style="font-size: 18px">Invoice</p>
-          <p style="font-size: 24px; font-weight: bold">#0342</p>
-        </div>
-        <div style="margin: 10px; margin-left: 50px">
-          <p style="font-size: 18px">Balance Due</p>
+        <div style="margin: 10px; margin-left: 50px; line-height: 1.3">
+          <p style="font-size: 18px">Order No</p>
           <p style="font-size: 24px; font-weight: bold">#0342</p>
         </div>
       </div>
     </header>
     <main style="margin-left: 100px; min-height: 1500px">
       <!-- Receipt Header -->
-      <div
-        style="
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 300px;
-          row-gap: 60px;
-          white-space: nowrap;
-          font-size: 20px;
-          margin-bottom: 50px;
-        "
-      >
-        <div style="color: rgba(45, 47, 49, 1); line-height: 1.5">
-          <p>Secure Link Services AG (SELISE)</p>
-          <p>The Circle 37, Postfach</p>
-          <p>8058 Zürich-Flughafen</p>
-          <p>Switzerland</p>
-          <p>CHE-104.375.184 MWST</p>
-        </div>
-        <div style="color: rgba(45, 47, 49, 1); line-height: 1.5">
-          <p>Bill To</p>
-          <p>Vendomat AG (Burgermeister)</p>
-          <p>Vendomat AG</p>
-          <p>Zentrumsplatz 1</p>
-          <p>3322 Urtenen -Schönbühl</p>
-          <p>Switzerland</p>
-        </div>
-        <div style="color: rgba(45, 47, 49, 1); line-height: 1.5">
-          <p>IBAN: CH67 8080 8005 0650 7263 3</p>
-          <p>CHF Empfänger: Secure Link Services AG SELISE</p>
-          <p>Postbox, The Circle 37,</p>
-          <p>8058 Zürich-Airport</p>
-          <p>Bank: Raiffeisenbank Seerücken, CH-8505 Pfyn</p>
-          <p>SWIFT/BIC: RAIFCH22</p>
-        </div>
-        <div style="color: rgba(45, 47, 49, 1); line-height: 1.5">
-          <p>Date: Dec 6, 2023</p>
-          <p>Terms: Net 30</p>
-          <p>8058 Zürich-Airport</p>
+      <div style="margin-bottom: 50px">
+        <p
+          style="
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 45px;
+          "
+        >
+          ORDERMONKEY
+        </p>
+
+        <div
+          style="
+            line-height: 1.5;
+            max-width: 1040px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+          "
+        >
+          <div>
+            <p>Customer Name: Bruno</p>
+            <p>Telephone Number: +41795470714</p>
+            <p>Order Type: Dinain</p>
+          </div>
+          <p>Order Date: 15.02.2024</p>
         </div>
       </div>
+
       <!-- Invoice Breakdown -->
       <table
         style="
