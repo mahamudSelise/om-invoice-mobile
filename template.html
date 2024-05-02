@@ -1,0 +1,11 @@
+{% for product in MetaData.metaInfo[0].OrderProducts %}
+<tr style="border-radius: 100px; border-bottom: 1px solid #000">
+    <td style="text-align: start; padding: 20px" colspan="2">
+        {{product.Name}}
+    </td>
+    <td style="text-align: start; padding: 20px">{{product.Quantity}}</td>
+    <td style="text-align: start; padding: 20px">{{ MetaData.metaInfo[0].Currency
+        }}{{product.ProductVariationPrice}}</td>
+    <td style="text-align: end; padding: 20px">2</td>
+</tr>
+{% endfor %}
