@@ -1,0 +1,106 @@
+<div
+  style="
+    width: 1040px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+  "
+>
+  <div style="background-color: #000; color: #fff; padding: 25px">
+    <div style="display: flex">
+      <div style="width: 70%; text-align: start">Item & Description</div>
+      <div style="width: 15%; text-align: start">Quantity</div>
+      <div style="width: 15%; text-align: start">Rate</div>
+    </div>
+  </div>
+  <div>
+    {% for product in MetaData.metaInfo[0].OrderProducts %}
+    <div style="display: flex; border-bottom: 1px solid #000">
+      <div style="width: 70%; text-align: start" colspan="2">
+        {{product.Name}}
+      </div>
+      <div style="width: 15%; text-align: start">{{product.Quantity}}</div>
+      <div style="width: 15%; text-align: start">
+        {{ MetaData.metaInfo[0].Currency }} {{product.ProductVariationPrice}}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-left: auto">
+    <div style="display: flex">
+      <div style="text-align: start; padding: 20px 15px"></div>
+      <div style="text-align: start; padding: 20px 15px">Subtotal</div>
+      <div style="text-align: start; padding: 20px; text-align: end">
+        {{ MetaData.metaInfo[0].Currency }} {{MetaData.metaInfo[0].SubTotal}}
+      </div>
+    </div>
+    {% for item in MetaData.metaInfo[0].MWSTList %}
+    <div style="display: flex">
+      <div colspan="2" style="text-align: start; padding: 20px 15px"></div>
+      <div style="text-align: start; padding: 20px 15px">
+        MWST ({{ item.Percent }} %)
+      </div>
+      <div style="text-align: start; padding: 20px; text-align: end">
+        {{ MetaData.metaInfo[0].Currency }} {{ item.Amount }}
+      </div>
+    </div>
+    {% endfor %}
+    <tr>
+      <td colspan="2" style="text-align: start; padding: 20px 15px"></td>
+      <td
+        style="
+          text-align: start;
+          padding: 20px;
+          border-radius: 100px;
+          border-bottom: 1px solid #000;
+        "
+      >
+        Discount
+      </td>
+      <td
+        style="
+          text-align: start;
+          padding: 20px;
+          border-radius: 100px;
+          border-bottom: 1px solid #000;
+          text-align: end;
+        "
+      >
+        {{ MetaData.metaInfo[0].Currency }}
+        {{MetaData.metaInfo[0].DiscountAmount}}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: start; padding: 20px 15px"></td>
+      <td
+        style="
+          text-align: start;
+          padding: 20px;
+          border-radius: 100px;
+          border-bottom: 1px solid #000;
+        "
+      >
+        Tip
+      </td>
+      <td
+        style="
+          text-align: start;
+          padding: 20px;
+          border-radius: 100px;
+          border-bottom: 1px solid #000;
+          text-align: end;
+        "
+      >
+        {{ MetaData.metaInfo[0].Currency }} {{MetaData.metaInfo[0].TipAmount}}
+      </td>
+    </tr>
+    <tr style="font-weight: bold">
+      <td colspan="2" style="text-align: start; padding: 20px 15px"></td>
+      <td style="text-align: start; padding: 20px 15px">Total</td>
+      <td style="text-align: start; padding: 20px; text-align: end">
+        {{ MetaData.metaInfo[0].Currency }} {{MetaData.metaInfo[0].TotalAmount}}
+      </td>
+    </tr>
+  </div>
+</div>
