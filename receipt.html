@@ -114,7 +114,7 @@
           </tr>
         </thead>
         <tbody>
-          {% for product in MetaData.metaInfo[0].OrderProducts %} {% if product.ModifierLength == 0 %}
+          {% for product in MetaData.metaInfo[0].OrderProducts %} {% if product.Modifiers.size == 0 %}
           <tr style="border-radius: 100px; border-bottom: 1px solid #000">
             <td style="text-align: start; padding: 20px" colspan="2">
               {{product.Name}}
@@ -127,7 +127,7 @@
               {{product.ProductVariationPrice}}
             </td>
           </tr>
-          {% endif %} {% if product.ModifierLength != 0 %}
+          {% endif %} {% if product.Modifiers.size != 0 %}
           <tr style="border-radius: 100px">
             <td style="text-align: start; padding: 20px" colspan="2">
               {{product.Name}}
@@ -140,11 +140,11 @@
               {{product.ProductVariationPrice}}
             </td>
           </tr>
-          {% for modifier in product.Modifiers %} {% if forloop.index != product.ModifierLength %}
+          {% for modifier in product.Modifiers %} {% if forloop.index != modifier.size %}
           <tr>
             <td colspan="4" style="padding: 10px 30px">> {{modifier.Name}}</td>
           </tr>
-          {% endif %} {% if forloop.index == product.ModifierLength %}
+          {% endif %} {% if forloop.index == modifier.size %}
           <tr>
             <td
               colspan="4"
