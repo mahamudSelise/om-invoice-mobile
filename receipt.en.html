@@ -140,11 +140,11 @@
               {{product.ProductVariationPrice}}
             </td>
           </tr>
-          {% for modifier in product.Modifiers %} {% if forloop.index != modifier.size %}
+          {% for modifier in product.Modifiers %} {% if forloop.index != product.Modifiers.size %}
           <tr>
             <td colspan="4" style="padding: 10px 30px">> {{modifier.Name}}</td>
           </tr>
-          {% endif %} {% if forloop.index == modifier.size %}
+          {% endif %} {% if forloop.index == product.Modifiers.size %}
           <tr>
             <td
               colspan="4"
