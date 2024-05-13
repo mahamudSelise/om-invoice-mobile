@@ -48,7 +48,7 @@
           </td>
           <td style="width: 50%; text-align: end">
             <div style="line-height: 1.3; margin-left: auto">
-              <p style="font-size: 18px">Auftragsnummer</p>
+              <p style="font-size: 18px">Bestellnummer</p>
               <p style="font-size: 24px; font-weight: bold">
                 {{MetaData.metaInfo[0].OrderNumber}}
               </p>
@@ -58,7 +58,7 @@
       </tbody>
     </table>
     <main style="padding: 20px 60px">
-      <!-- Belegkopf -->
+      <!-- Rechnungskopf -->
       <div style="margin-bottom: 50px">
         <p
           style="
@@ -75,26 +75,30 @@
           <tr>
             <td style="width: 50%; text-align: start">
               <div>
-                {% if MetaData.metaInfo[0].CustomerName !='' %}
+                {% if MetaData.metaInfo[0].CustomerName != '' %}
                 <p>Kundenname: {{MetaData.metaInfo[0].CustomerName}}</p>
-                {% endif %} {% if MetaData.metaInfo[0].CustomerEmail!=''%}
+                {% endif %} {% if MetaData.metaInfo[0].CustomerEmail != '' %}
                 <p>E-Mail: {{MetaData.metaInfo[0].CustomerEmail}}</p>
-                {% endif %} {% if MetaData.metaInfo[0].CustomerPhoneNumber!=''%}
+                {% endif %} {% if MetaData.metaInfo[0].CustomerPhoneNumber != '' %}
                 <p>
                   Telefonnummer: {{MetaData.metaInfo[0].CustomerPhoneNumber}}
                 </p>
+                {% endif %} {% if MetaData.metaInfo[0].TableNumber != '' %}
+                <p>
+                  Tischnummer: {{MetaData.metaInfo[0].TableNumber}}
+                </p>
                 {% endif %}
-                <p>Auftragsart: {{MetaData.metaInfo[0].OrderType}}</p>
+                <p>Bestelltyp: {{MetaData.metaInfo[0].OrderType}}</p>
               </div>
             </td>
             <td style="width: 50%; text-align: end">
-              <p>Auftragsdatum: {{MetaData.metaInfo[0].CreateDate}}</p>
+              <p>Bestelldatum: {{MetaData.metaInfo[0].CreateDate}}</p>
             </td>
           </tr>
         </table>
       </div>
 
-      <!-- Rechnungsdetails -->
+      <!-- Rechnungsaufschlüsselung -->
       <table
         style="
           width: 100%;
@@ -109,8 +113,8 @@
             <th style="text-align: start; padding: 20px" colspan="2">
               Artikel & Beschreibung
             </th>
-            <th style="text-align: start; padding: 20px">Menge</th>
-            <th style="text-align: start; padding: 20px">Preis</th>
+            <th style="text-align: end; padding: 20px 0px 20px">Menge</th>
+            <th style="text-align: end; padding: 20px 100px 20px">Preis</th>
           </tr>
         </thead>
         <tbody>
@@ -119,10 +123,10 @@
             <td style="text-align: start; padding: 20px" colspan="2">
               {{product.Name}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{product.Quantity}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{ MetaData.metaInfo[0].Currency }}
               {{product.ProductVariationPrice}}
             </td>
@@ -132,10 +136,10 @@
             <td style="text-align: start; padding: 20px" colspan="2">
               {{product.Name}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{product.Quantity}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{ MetaData.metaInfo[0].Currency }}
               {{product.ProductVariationPrice}}
             </td>

@@ -75,13 +75,17 @@
           <tr>
             <td style="width: 50%; text-align: start">
               <div>
-                {% if MetaData.metaInfo[0].CustomerName !='' %}
+                {% if MetaData.metaInfo[0].CustomerName != '' %}
                 <p>Customer Name: {{MetaData.metaInfo[0].CustomerName}}</p>
-                {% endif %} {% if MetaData.metaInfo[0].CustomerEmail!=''%}
+                {% endif %} {% if MetaData.metaInfo[0].CustomerEmail != '' %}
                 <p>Email: {{MetaData.metaInfo[0].CustomerEmail}}</p>
-                {% endif %} {% if MetaData.metaInfo[0].CustomerPhoneNumber!=''%}
+                {% endif %} {% if MetaData.metaInfo[0].CustomerPhoneNumber != '' %}
                 <p>
                   Telephone Number: {{MetaData.metaInfo[0].CustomerPhoneNumber}}
+                </p>
+                {% endif %} {% if MetaData.metaInfo[0].TableNumber != '' %}
+                <p>
+                  Table Number: {{MetaData.metaInfo[0].TableNumber}}
                 </p>
                 {% endif %}
                 <p>Order Type: {{MetaData.metaInfo[0].OrderType}}</p>
@@ -109,8 +113,8 @@
             <th style="text-align: start; padding: 20px" colspan="2">
               Item & Description
             </th>
-            <th style="text-align: start; padding: 20px">Quantity</th>
-            <th style="text-align: start; padding: 20px">Rate</th>
+            <th style="text-align: end; padding: 20px 0px 20px">Quantity</th>
+            <th style="text-align: end; padding: 20px 100px 20px">Rate</th>
           </tr>
         </thead>
         <tbody>
@@ -119,10 +123,10 @@
             <td style="text-align: start; padding: 20px" colspan="2">
               {{product.Name}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{product.Quantity}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{ MetaData.metaInfo[0].Currency }}
               {{product.ProductVariationPrice}}
             </td>
@@ -132,10 +136,10 @@
             <td style="text-align: start; padding: 20px" colspan="2">
               {{product.Name}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{product.Quantity}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{ MetaData.metaInfo[0].Currency }}
               {{product.ProductVariationPrice}}
             </td>

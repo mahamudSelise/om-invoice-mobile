@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html
-  lang="fr"
+  lang="it"
   style="
     background-color: #000;
     box-sizing: border-box;
@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>Facture OM</title>
+    <title>Fattura OM</title>
     <style>
       * {
         margin: 0;
@@ -48,7 +48,7 @@
           </td>
           <td style="width: 50%; text-align: end">
             <div style="line-height: 1.3; margin-left: auto">
-              <p style="font-size: 18px">Numéro de commande</p>
+              <p style="font-size: 18px">Numero Ordine</p>
               <p style="font-size: 24px; font-weight: bold">
                 {{MetaData.metaInfo[0].OrderNumber}}
               </p>
@@ -58,7 +58,7 @@
       </tbody>
     </table>
     <main style="padding: 20px 60px">
-      <!-- En-tête de la facture -->
+      <!-- Intestazione Fattura -->
       <div style="margin-bottom: 50px">
         <p
           style="
@@ -75,26 +75,30 @@
           <tr>
             <td style="width: 50%; text-align: start">
               <div>
-                {% if MetaData.metaInfo[0].CustomerName !='' %}
-                <p>Nom du client: {{MetaData.metaInfo[0].CustomerName}}</p>
-                {% endif %} {% if MetaData.metaInfo[0].CustomerEmail!=''%}
-                <p>E-mail: {{MetaData.metaInfo[0].CustomerEmail}}</p>
-                {% endif %} {% if MetaData.metaInfo[0].CustomerPhoneNumber!=''%}
+                {% if MetaData.metaInfo[0].CustomerName != '' %}
+                <p>Nome Cliente: {{MetaData.metaInfo[0].CustomerName}}</p>
+                {% endif %} {% if MetaData.metaInfo[0].CustomerEmail != '' %}
+                <p>Email: {{MetaData.metaInfo[0].CustomerEmail}}</p>
+                {% endif %} {% if MetaData.metaInfo[0].CustomerPhoneNumber != '' %}
                 <p>
-                  Numéro de téléphone: {{MetaData.metaInfo[0].CustomerPhoneNumber}}
+                  Numero di Telefono: {{MetaData.metaInfo[0].CustomerPhoneNumber}}
+                </p>
+                {% endif %} {% if MetaData.metaInfo[0].TableNumber != '' %}
+                <p>
+                  Numero Tavolo: {{MetaData.metaInfo[0].TableNumber}}
                 </p>
                 {% endif %}
-                <p>Type de commande: {{MetaData.metaInfo[0].OrderType}}</p>
+                <p>Tipo Ordine: {{MetaData.metaInfo[0].OrderType}}</p>
               </div>
             </td>
             <td style="width: 50%; text-align: end">
-              <p>Date de commande: {{MetaData.metaInfo[0].CreateDate}}</p>
+              <p>Data Ordine: {{MetaData.metaInfo[0].CreateDate}}</p>
             </td>
           </tr>
         </table>
       </div>
 
-      <!-- Détails de la facture -->
+      <!-- Dettagli Fattura -->
       <table
         style="
           width: 100%;
@@ -107,10 +111,10 @@
         <thead style="background-color: #000; color: #fff">
           <tr>
             <th style="text-align: start; padding: 20px" colspan="2">
-              Article & Description
+              Articolo & Descrizione
             </th>
-            <th style="text-align: start; padding: 20px">Quantité</th>
-            <th style="text-align: start; padding: 20px">Tarif</th>
+            <th style="text-align: end; padding: 20px 0px 20px">Quantità</th>
+            <th style="text-align: end; padding: 20px 100px 20px">Tariffa</th>
           </tr>
         </thead>
         <tbody>
@@ -119,10 +123,10 @@
             <td style="text-align: start; padding: 20px" colspan="2">
               {{product.Name}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{product.Quantity}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{ MetaData.metaInfo[0].Currency }}
               {{product.ProductVariationPrice}}
             </td>
@@ -132,10 +136,10 @@
             <td style="text-align: start; padding: 20px" colspan="2">
               {{product.Name}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{product.Quantity}}
             </td>
-            <td style="text-align: start; padding: 20px">
+            <td style="text-align: end; padding: 20px">
               {{ MetaData.metaInfo[0].Currency }}
               {{product.ProductVariationPrice}}
             </td>
@@ -159,7 +163,7 @@
         <tfoot style="margin-left: auto">
           <tr>
             <td colspan="2" style="text-align: start; padding: 20px 15px"></td>
-            <td style="text-align: start; padding: 20px 15px">Total partiel</td>
+            <td style="text-align: start; padding: 20px 15px">Subtotale</td>
             <td style="text-align: start; padding: 20px; text-align: end">
               {{ MetaData.metaInfo[0].Currency }}
               {{MetaData.metaInfo[0].SubTotal}}
@@ -169,7 +173,7 @@
           <tr>
             <td colspan="2" style="text-align: start; padding: 20px 15px"></td>
             <td style="text-align: start; padding: 20px 15px">
-              TVA ({{ item.Percent }} %)
+              IVA ({{ item.Percent }} %)
             </td>
             <td style="text-align: start; padding: 20px; text-align: end">
               {{ MetaData.metaInfo[0].Currency }} {{ item.Amount }}
@@ -185,7 +189,7 @@
                 border-radius: 100px;
               "
             >
-              Remise
+              Sconto
             </td>
             <td
               style="
@@ -209,7 +213,7 @@
                 border-bottom: 1px solid #000;
               "
             >
-              Pourboire
+              Mancia
             </td>
             <td
               style="
@@ -226,7 +230,7 @@
           </tr>
           <tr style="font-weight: bold">
             <td colspan="2" style="text-align: start; padding: 20px 15px"></td>
-            <td style="text-align: start; padding: 20px 15px">Total</td>
+            <td style="text-align: start; padding: 20px 15px">Totale</td>
             <td style="text-align: start; padding: 20px; text-align: end">
               {{ MetaData.metaInfo[0].Currency }}
               {{MetaData.metaInfo[0].TotalAmount}}
@@ -235,60 +239,60 @@
         </tfoot>
       </table>
 
-      <!-- Informations de paiement -->
+      <!-- Informazioni di Pagamento -->
       <table>
         {% if MetaData.metaInfo[0].PaymentMethod !='' %}
         <tr>
-          <td style="padding-bottom: 10px">Méthode de paiement: &nbsp;</td>
+          <td style="padding-bottom: 10px">Metodo di Pagamento : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].PaymentMethod}}
           </td>
         </tr>
         {% endif %} {% if MetaData.metaInfo[0].CardNumber !='' %}
         <tr>
-          <td style="padding-bottom: 10px">Numéro de carte: &nbsp;</td>
+          <td style="padding-bottom: 10px">Numero di Carta : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].CardNumber}}
           </td>
         </tr>
         {% endif %} {% if MetaData.metaInfo[0].PaymentReferenceId !='' %}
         <tr>
-          <td style="padding-bottom: 10px">ID de transaction: &nbsp;</td>
+          <td style="padding-bottom: 10px">ID Transazione : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].PaymentReferenceId}}
           </td>
         </tr>
         {% endif %}{% if MetaData.metaInfo[0].TerminalId !='' %}
         <tr>
-          <td style="padding-bottom: 10px">ID terminal: &nbsp;</td>
+          <td style="padding-bottom: 10px">ID Terminale : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].TerminalId}}
           </td>
         </tr>
         {% endif %} {% if MetaData.metaInfo[0].TerminalId !='' %}
         <tr>
-          <td style="padding-bottom: 10px">TRX. REF-NO: &nbsp;</td>
+          <td style="padding-bottom: 10px">REF. TRX. : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].SIXTransactionReference}}
           </td>
         </tr>
         {% endif %} {% if MetaData.metaInfo[0].ApprovalCode !='' %}
         <tr>
-          <td style="padding-bottom: 10px">Code d'approbation: &nbsp;</td>
+          <td style="padding-bottom: 10px">Codice di Autorizzazione : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].ApprovalCode}}
           </td>
         </tr>
         {% endif %}{% if MetaData.metaInfo[0].AcquirerReference !='' %}
         <tr>
-          <td style="padding-bottom: 10px">ACQ-ID: &nbsp;</td>
+          <td style="padding-bottom: 10px">ID Acquirente : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].AcquirerReference}}
           </td>
         </tr>
         {% endif %} {% if MetaData.metaInfo[0].TotalAmount !='' %}
         <tr>
-          <td style="padding-bottom: 10px">Montant du paiement: &nbsp;</td>
+          <td style="padding-bottom: 10px">Importo Pagamento : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{ MetaData.metaInfo[0].Currency }}
             {{MetaData.metaInfo[0].TotalAmount}}
@@ -296,14 +300,14 @@
         </tr>
         {% endif %} {% if MetaData.metaInfo[0].PaymentDate !='' %}
         <tr>
-          <td style="padding-bottom: 10px">Date de paiement: &nbsp;</td>
+          <td style="padding-bottom: 10px">Data Pagamento : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].PaymentDate}}
           </td>
         </tr>
         {% endif %} {% if MetaData.metaInfo[0].PaymentTime !='' %}
         <tr>
-          <td style="padding-bottom: 10px">Heure de paiement: &nbsp;</td>
+          <td style="padding-bottom: 10px">Ora Pagamento : &nbsp;</td>
           <td style="padding-bottom: 10px">
             {{MetaData.metaInfo[0].PaymentTime}}
           </td>
